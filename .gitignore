@@ -1,49 +1,32 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode
+.DS_Store
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+application/cache/*
+!application/cache/index.html
 
-# Local History for Visual Studio Code
-.history/
+application/logs/*
+!application/logs/index.html
 
-# Built Visual Studio Code Extensions
-*.vsix
+!application/*/.htaccess
 
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
+composer.lock
+tests/mocks/database/ci_test.sqlite
 
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
 
-# Dump file
-*.stackdump
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
 
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/
