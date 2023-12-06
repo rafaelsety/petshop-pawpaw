@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Des 2023 pada 17.03
+-- Waktu pembuatan: 06 Des 2023 pada 16.33
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -204,14 +204,50 @@ CREATE TABLE `penjualan` (
 --
 
 CREATE TABLE `produk` (
-  `kd_produk` int(10) NOT NULL,
+  `kd_produk` varchar(10) NOT NULL,
   `nama_produk` varchar(256) NOT NULL,
   `jenis_hewan` varchar(50) NOT NULL,
-  `kategori_produk` varchar(100) NOT NULL,
+  `kategori_produk` varchar(50) NOT NULL,
   `stok` int(100) NOT NULL,
   `berat_bersih` varchar(10) NOT NULL,
+  `harga` double NOT NULL,
   `gambar` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `produk`
+--
+
+INSERT INTO `produk` (`kd_produk`, `nama_produk`, `jenis_hewan`, `kategori_produk`, `stok`, `berat_bersih`, `harga`, `gambar`) VALUES
+('AK001', 'Gunting Kuku', 'Kucing', 'Aksesoris', 25, '-', 10000, 'gunting kuku kucing_anjing.jpeg'),
+('AK002', 'Gunting Kuku', 'Anjing', 'Aksesoris', 25, '-', 10000, 'gunting kuku kucing_anjing.jpeg'),
+('AK003', 'Tempat Makan & Minum Plastik', 'Kucing', 'Aksesoris', 5, '-', 55000, 'Tempat makan_minum kucing.jpeg'),
+('AK004', 'Tempat Makan & Minum Plastik', 'Anjing', 'Aksesoris', 10, '-', 55000, 'Tempat makan_minum kucing.jpeg'),
+('AK005', 'Tempat Makan & Minum Stainless', 'Kucing', 'Aksesoris', 20, '-', 65000, 'Tempat Makan_Minum anjing.jpg'),
+('AK006', 'Tempat Makan & Minum Stainless', 'Anjing', 'Aksesoris', 20, '-', 65000, 'Tempat Makan_Minum anjing.jpg'),
+('AK007', 'Litter Box (Box Pasir)', 'Kucing', 'Aksesoris', 50, '-', 20000, 'little box.jpeg'),
+('AK008', 'Litter Box (Box Pasir)', 'Anjing', 'Aksesoris', 50, '-', 20000, 'little box.jpeg'),
+('AK009', 'Sapu & Pengki', 'Kucing', 'Aksesoris', 50, '-', 7000, 'Sapu _ Pengki pembersih kotoran.jpeg'),
+('AK010', 'Sapu & Pengki', 'Anjing', 'Aksesoris', 50, '-', 7000, 'Sapu _ Pengki pembersih kotoran.jpeg'),
+('AK011', 'Kandang Hewan', 'Kucing', 'Aksesoris', 15, '-', 70000, 'Kandang.jpeg'),
+('AK012', 'Kandang Hewan', 'Anjing', 'Aksesoris', 15, '-', 70000, 'Kandang.jpeg'),
+('AK013', 'Kalung', 'Kucing', 'Aksesoris', 100, '-', 5000, 'Kalung kucing_anjing.jpeg'),
+('AK014', 'Kalung', 'Anjing', 'Aksesoris', 100, '-', 5000, 'Kalung kucing_anjing.jpeg'),
+('AK015', 'Shampoo Kucing', 'Kucing', 'Aksesoris', 20, '100 ml', 20000, 'sampo kucing.jpeg'),
+('AK016', 'Shampoo Anjing', 'Anjing', 'Aksesoris', 10, '100 ml', 35000, 'sampo anjing.jpeg'),
+('AK017', 'Pasir', 'Kucing', 'Aksesoris', 25, '25 L', 25000, 'pasir kucing.jpeg'),
+('AK018', 'Sisir', 'Kucing', 'Aksesoris', 50, '-', 18000, 'sisir kucing_anjing.jpeg'),
+('AK019', 'Sisir', 'Anjing', 'Aksesoris', 50, '-', 18000, 'sisir kucing_anjing.jpeg'),
+('MK001', 'Royal Canin', 'Kucing', 'Makanan', 50, '400 gr', 150000, 'royal canin.jpeg'),
+('MK002', 'Bolt', 'Kucing', 'Makanan', 85, '8 kg', 140000, 'bolt.jpeg'),
+('MK003', 'Excel', 'Kucing', 'Makanan', 100, '500 gr', 15000, 'excel.jpeg'),
+('MK004', 'Cat Choize', 'Kucing', 'Makanan', 50, '800 gr', 25000, 'cat choize.jpeg'),
+('MK005', 'Whiskas', 'Kucing', 'Makanan', 30, '1 kg', 70000, 'whiskas.jpeg'),
+('MK006', 'Equilibrio', 'Anjing', 'Makanan', 25, '2 kg', 160000, 'Equilibrio.jpeg'),
+('MK007', 'Happy Dog', 'Anjing', 'Makanan', 45, '1 kg', 80000, 'Happy dog.jpeg'),
+('MK008', 'Dog Choize', 'Anjing', 'Makanan', 100, '800 gr', 20000, 'Dog choize.jpeg'),
+('MK009', 'Nice', 'Anjing', 'Makanan', 50, '1 kg', 25000, 'nice.jpeg'),
+('MK010', 'Pedigree', 'Anjing', 'Makanan', 26, '1 kg', 30000, 'Pedigree.jpeg');
 
 -- --------------------------------------------------------
 
@@ -403,12 +439,6 @@ ALTER TABLE `nota`
 --
 ALTER TABLE `penjualan`
   MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `produk`
---
-ALTER TABLE `produk`
-  MODIFY `kd_produk` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `toko`
