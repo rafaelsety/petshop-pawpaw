@@ -1,12 +1,10 @@
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
-<<<<<<< HEAD
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website</span>
                     </div>
-=======
->>>>>>> 41554d3c17966560529941a7676977174dab0304
+
                 </div>
             </footer>
             <!-- End of Footer -->
