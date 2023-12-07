@@ -76,22 +76,22 @@ class Manajemen extends CI_Controller
         $data['title'] = 'manajemen';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
-        $data['manajemen']= $this->manajemen->getUser();
+        $data['manajemen']= $this->manajemen->userWhere(['id' => $this->uri->segment(3)])->result_array();
 
-        $this->form_validation->set_rules('nama', 'nama' );
-        $this->form_validation->set_rules('username', ' username');
-        $this->form_validation->set_rules('nik', ' nik' );
-        $this->form_validation->set_rules('password', 'password ');
-        $this->form_validation->set_rules('jabatan', ' jabatan');
-        $this->form_validation->set_rules('status', 'status');
-        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk');
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('nik', 'nik', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required');
+        $this->form_validation->set_rules('status', 'status', 'required');
+        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required');
 
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/profile/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = '3000';
-        $config['max_width'] = '124';
-        $config['max_height'] = '100';
+        $config['max_width'] = '2000';
+        $config['max_height'] = '2000';
         $config['file_name'] = 'img' . time();
 
         $this->load->library('upload', $config);
@@ -116,14 +116,14 @@ class Manajemen extends CI_Controller
                 'nama' => $this->input->post('nama', true),
                 'username' => $this->input->post('username', true),
                 'nik' => $this->input->post('nik', true),
-                'password_' => $this->input->post('password', true),
+                'password' => $this->input->post('password', true),
                 'jabatan' => $this->input->post('jabatan', true),
                 'status' => $this->input->post('status', true),
                 'tanggal_masuk' => $this->input->post('tanggal_masuk', true),
             ];
 
             $this->manajemen->updateUser($data, ['id' => $this->input->post('id')]);
-            redirect('user');
+            redirect('manajemen');
         }
     }
 }

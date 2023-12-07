@@ -11,9 +11,9 @@
             <?= $this->session->flashdata('pesan'); ?>
             <?php foreach ($manajemen as $m) { ?>
                 <form action="<?= base_url('manajemen/ubahUser'); ?>" method="post" enctype="multipart/form-data">
-                <div class="form-group">
+                    <div class="form-group">
                         <input type="hidden" name="id" id="id" value="<?php echo $m['id']; ?>">
-                    </div>   
+                    </div>
                     <div class="form-group">
                         <?php
                         if (isset($m['gambar'])) { ?>
@@ -24,10 +24,10 @@
                                 <source srcset="" type="image/svg+xml">
                                 <img src="<?= base_url('assets/img/profile/') . $m['gambar']; ?>" class="rounded mx-auto mb-3 d-blok" width="500px" alt="...">
                             </picture>
-                        <?php } ?> 
+                        <?php } ?>
                         <input type="file" class="form-control form-control-user" id="gambar" name="gambar">
                     </div>
-                        <div class="form-group">
+                    <div class="form-group">
                         <input type="hidden" name="id" id="id" value="<?php echo $m['id']; ?>">
                         <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama " value="<?= $m['nama']; ?>">
                     </div>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan nominal Tanggal masuk" value="<?= $m['tanggal_masuk']; ?>">
                     </div>
-                       
+
                     <div class="form-group">
                         <input type="button" class="form-control form-control-user btn btn-dark col-lg-3 mt-3" value="Kembali" onclick="window.history.go(-1)">
                         <input type="submit" class="form-control form-control-user btn btn-primary col-lg-3 mt-3" value="Update">
