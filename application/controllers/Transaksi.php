@@ -11,13 +11,16 @@ class Transaksi extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Transaksi';
+        $data['title'] = 'transaksi';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $this->load->model('Transaksi_Model', 'transaksi');
+
+        $data['transaksi'] = $this->transaksi->getAlltransaksi();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('transaksi/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer', );
     }
 }

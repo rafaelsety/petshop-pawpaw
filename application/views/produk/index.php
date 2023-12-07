@@ -45,8 +45,8 @@
                                 <td><?= $p['harga_jual']; ?></td>
                                 <td><?= $p['stok']; ?></td>
                                 <td>
-                                    <a href="" class="badge text-bg-success">edit</a>
-                                    <a href="" class="badge text-bg-danger">hapus</a>
+                                    <a class="btn btn-sm btn-primary" href="" role="button"><i class="fa fa-pencil"></i> Edit</a>
+                                    <button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Hapus Data ini?')" fdprocessedid="26fdzs"><i class="fa fa-trash"></i> Hapus</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
