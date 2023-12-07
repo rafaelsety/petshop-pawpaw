@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 05:02 AM
+-- Generation Time: Dec 07, 2023 at 09:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -49,6 +49,57 @@ INSERT INTO `akses_menu_user` (`id`, `jabatan`, `menu_id`) VALUES
 (9, 'Kasir', '2'),
 (10, 'Kasir', '3'),
 (11, 'Kasir', '4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang`
+--
+
+CREATE TABLE `barang` (
+  `id` int(11) NOT NULL,
+  `id_produk` varchar(255) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `nama_produk` text NOT NULL,
+  `merk` varchar(255) NOT NULL,
+  `harga_beli` varchar(255) NOT NULL,
+  `harga_jual` varchar(255) NOT NULL,
+  `satuan_produk` varchar(255) NOT NULL,
+  `stok` text NOT NULL,
+  `tgl_input` varchar(255) NOT NULL,
+  `tgl_update` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id`, `id_produk`, `id_kategori`, `nama_produk`, `merk`, `harga_beli`, `harga_jual`, `satuan_produk`, `stok`, `tgl_input`, `tgl_update`) VALUES
+(1, 'BR001', 1, 'Pensil', 'Fabel Castel', '1500', '3000', 'PCS', '98', '6 October 2020, 0:41', NULL),
+(2, 'BR002', 5, 'Sabun', 'Lifeboy', '1800', '3000', 'PCS', '38', '6 October 2020, 0:41', '6 October 2020, 0:54'),
+(3, 'BR003', 1, 'Pulpen', 'Standard', '1500', '2000', 'PCS', '70', '6 October 2020, 1:34', NULL),
+(4, 'BR004', 1, 'Penghapus', 'Joyko', '1000', '2000', 'PCS', '7', '6 October 2020, 1:34', NULL),
+(5, 'BR005', 1, 'Tipe-x', 'Joyko', '2000', '5000', 'PCS', '6', '6 October 2020, 1:34', NULL),
+(6, 'BR006', 1, 'Klip', 'Clip', '500', '1000', 'PCS', '6', '6 October 2020, 1:34', NULL),
+(7, 'BR007', 1, 'Lem', 'Fox', '5000', '7000', 'PCS', '19', '6 October 2020, 1:34', NULL),
+(8, 'BR008', 1, 'Buku Tulis', 'SIDU', '2000', '3000', 'PCS', '3', '6 October 2020, 1:34', NULL),
+(9, 'BR010', 1, 'Spidol', 'Snowman', '1000', '2000', 'PCS', '10', '6 October 2020, 1:34', NULL),
+(10, 'BR011', 1, 'Kuas', 'Spot', '2000', '3000', 'PCS', '28', '6 October 2020, 1:34', NULL),
+(12, 'BR013', 1, 'Buku Gambar', 'Sidu', '4000', '5000', 'PCS', '3', '6 October 2020, 1:34', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kasir`
+--
+
+CREATE TABLE `kasir` (
+  `kd_produk` int(10) NOT NULL,
+  `nama_produk` varchar(256) NOT NULL,
+  `bnyk_unit` int(50) NOT NULL,
+  `harga` double NOT NULL,
+  `sub_total` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -153,35 +204,61 @@ CREATE TABLE `penjualan` (
 --
 
 CREATE TABLE `produk` (
-  `id` int(11) NOT NULL,
-  `id_produk` varchar(255) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
-  `nama_produk` text NOT NULL,
-  `merk` varchar(255) NOT NULL,
-  `harga_beli` varchar(255) NOT NULL,
-  `harga_jual` varchar(255) NOT NULL,
-  `satuan_produk` varchar(255) NOT NULL,
-  `stok` text NOT NULL,
-  `tgl_input` varchar(255) NOT NULL,
-  `tgl_update` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `kd_produk` varchar(10) NOT NULL,
+  `nama_produk` varchar(256) NOT NULL,
+  `jenis_hewan` varchar(50) NOT NULL,
+  `kategori_produk` varchar(50) NOT NULL,
+  `stok` int(100) NOT NULL,
+  `berat_bersih` varchar(10) NOT NULL,
+  `harga` double NOT NULL,
+  `gambar` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id`, `id_produk`, `id_kategori`, `nama_produk`, `merk`, `harga_beli`, `harga_jual`, `satuan_produk`, `stok`, `tgl_input`, `tgl_update`) VALUES
-(1, 'BR001', 1, 'Pensil', 'Fabel Castel', '1500', '3000', 'PCS', '98', '6 October 2020, 0:41', NULL),
-(2, 'BR002', 5, 'Sabun', 'Lifeboy', '1800', '3000', 'PCS', '38', '6 October 2020, 0:41', '6 October 2020, 0:54'),
-(3, 'BR003', 1, 'Pulpen', 'Standard', '1500', '2000', 'PCS', '70', '6 October 2020, 1:34', NULL),
-(4, 'BR004', 1, 'Penghapus', 'Joyko', '1000', '2000', 'PCS', '7', '6 October 2020, 1:34', NULL),
-(5, 'BR005', 1, 'Tipe-x', 'Joyko', '2000', '5000', 'PCS', '6', '6 October 2020, 1:34', NULL),
-(6, 'BR006', 1, 'Klip', 'Clip', '500', '1000', 'PCS', '6', '6 October 2020, 1:34', NULL),
-(7, 'BR007', 1, 'Lem', 'Fox', '5000', '7000', 'PCS', '19', '6 October 2020, 1:34', NULL),
-(8, 'BR008', 1, 'Buku Tulis', 'SIDU', '2000', '3000', 'PCS', '3', '6 October 2020, 1:34', NULL),
-(9, 'BR010', 1, 'Spidol', 'Snowman', '1000', '2000', 'PCS', '10', '6 October 2020, 1:34', NULL),
-(10, 'BR011', 1, 'Kuas', 'Spot', '2000', '3000', 'PCS', '28', '6 October 2020, 1:34', NULL),
-(12, 'BR013', 1, 'Buku Gambar', 'Sidu', '4000', '5000', 'PCS', '3', '6 October 2020, 1:34', NULL);
+INSERT INTO `produk` (`kd_produk`, `nama_produk`, `jenis_hewan`, `kategori_produk`, `stok`, `berat_bersih`, `harga`, `gambar`) VALUES
+('AK001', 'Gunting Kuku', 'Kucing', 'Aksesoris', 25, '-', 10000, 'gunting kuku kucing_anjing.jpeg'),
+('AK002', 'Gunting Kuku', 'Anjing', 'Aksesoris', 25, '-', 10000, 'gunting kuku kucing_anjing.jpeg'),
+('AK003', 'Tempat Makan & Minum Plastik', 'Kucing', 'Aksesoris', 5, '-', 55000, 'Tempat makan_minum kucing.jpeg'),
+('AK004', 'Tempat Makan & Minum Plastik', 'Anjing', 'Aksesoris', 10, '-', 55000, 'Tempat makan_minum kucing.jpeg'),
+('AK005', 'Tempat Makan & Minum Stainless', 'Kucing', 'Aksesoris', 20, '-', 65000, 'Tempat Makan_Minum anjing.jpg'),
+('AK006', 'Tempat Makan & Minum Stainless', 'Anjing', 'Aksesoris', 20, '-', 65000, 'Tempat Makan_Minum anjing.jpg'),
+('AK007', 'Litter Box (Box Pasir)', 'Kucing', 'Aksesoris', 50, '-', 20000, 'little box.jpeg'),
+('AK008', 'Litter Box (Box Pasir)', 'Anjing', 'Aksesoris', 50, '-', 20000, 'little box.jpeg'),
+('AK009', 'Sapu & Pengki', 'Kucing', 'Aksesoris', 50, '-', 7000, 'Sapu _ Pengki pembersih kotoran.jpeg'),
+('AK010', 'Sapu & Pengki', 'Anjing', 'Aksesoris', 50, '-', 7000, 'Sapu _ Pengki pembersih kotoran.jpeg'),
+('AK011', 'Kandang Hewan', 'Kucing', 'Aksesoris', 15, '-', 70000, 'Kandang.jpeg'),
+('AK012', 'Kandang Hewan', 'Anjing', 'Aksesoris', 15, '-', 70000, 'Kandang.jpeg'),
+('AK013', 'Kalung', 'Kucing', 'Aksesoris', 100, '-', 5000, 'Kalung kucing_anjing.jpeg'),
+('AK014', 'Kalung', 'Anjing', 'Aksesoris', 100, '-', 5000, 'Kalung kucing_anjing.jpeg'),
+('AK015', 'Shampoo Kucing', 'Kucing', 'Aksesoris', 20, '100 ml', 20000, 'sampo kucing.jpeg'),
+('AK016', 'Shampoo Anjing', 'Anjing', 'Aksesoris', 10, '100 ml', 35000, 'sampo anjing.jpeg'),
+('AK017', 'Pasir', 'Kucing', 'Aksesoris', 25, '25 L', 25000, 'pasir kucing.jpeg'),
+('AK018', 'Sisir', 'Kucing', 'Aksesoris', 50, '-', 18000, 'sisir kucing_anjing.jpeg'),
+('AK019', 'Sisir', 'Anjing', 'Aksesoris', 50, '-', 18000, 'sisir kucing_anjing.jpeg'),
+('M001', 'Mainan Kucing Tikus', 'Kucing', 'Mainan', 50, '-', 7.5, 'Mainan Kucing Tikus.png'),
+('M002', 'Play Toy With Circuit Ball With Scratch Pad', 'Kucing', 'Mainan', 30, '-', 85, 'Play Toy With Circuit Ball With Scratch Pad.png'),
+('M003', 'Play Toy Tower', 'Kucing', 'Mainan', 60, '-', 54, 'Play Toy Tower.png'),
+('M004', 'Doll Fish', 'Kucing', 'Mainan', 55, '-', 28, 'doll fish.jpeg'),
+('M005', 'Mainan Terowongan Lipat Tunnel 1 Arah', 'Kucing', 'Mainan', 45, '-', 70, 'Mainan Terowongan Lipat Tunnel 1 Arah.png'),
+('M006', 'Small Bell Rubbe Ball', 'Anjing', 'Mainan', 65, '-', 9, 'Small Bell Rubbe Ball.jpg'),
+('M007', 'Silicone Frisbee Dog Toys', 'Anjing', 'Mainan', 36, '-', 11, 'Silicone Frisbee Dog Toys.png'),
+('M008', 'Plush Toys Squeaky', 'Anjing', 'Mainan', 25, '-', 25, 'Plush Toys Squeaky.jpg'),
+('M009', 'Bel Pengumpan Makanan', 'Kucing', 'Mainan', 60, '-', 10, 'Bel Pengumpan Makanan.jpeg'),
+('M010', 'Bel Pengumpan Makanan', 'Anjing', 'Mainan', 60, '-', 10, 'Bel Pengumpan Makanan.jpeg'),
+('M011', 'Dog Rope Toy', 'Kucing', 'Mainan', 29, '-', 10, 'Dog Rope Toy.jpg'),
+('MK001', 'Royal Canin', 'Kucing', 'Makanan', 50, '400 gr', 150000, 'royal canin.jpeg'),
+('MK002', 'Bolt', 'Kucing', 'Makanan', 85, '8 kg', 140000, 'bolt.jpeg'),
+('MK003', 'Excel', 'Kucing', 'Makanan', 100, '500 gr', 15000, 'excel.jpeg'),
+('MK004', 'Cat Choize', 'Kucing', 'Makanan', 50, '800 gr', 25000, 'cat choize.jpeg'),
+('MK005', 'Whiskas', 'Kucing', 'Makanan', 30, '1 kg', 70000, 'whiskas.jpeg'),
+('MK006', 'Equilibrio', 'Anjing', 'Makanan', 25, '2 kg', 160000, 'Equilibrio.jpeg'),
+('MK007', 'Happy Dog', 'Anjing', 'Makanan', 45, '1 kg', 80000, 'Happy dog.jpeg'),
+('MK008', 'Dog Choize', 'Anjing', 'Makanan', 100, '800 gr', 20000, 'Dog choize.jpeg'),
+('MK009', 'Nice', 'Anjing', 'Makanan', 50, '1 kg', 25000, 'nice.jpeg'),
+('MK010', 'Pedigree', 'Anjing', 'Makanan', 26, '1 kg', 30000, 'Pedigree.jpeg');
 
 -- --------------------------------------------------------
 
@@ -218,6 +295,7 @@ CREATE TABLE `user` (
   `nik` varchar(16) NOT NULL,
   `password` varchar(128) NOT NULL,
   `jabatan` varchar(11) NOT NULL,
+  `no_hp_user` int(13) NOT NULL,
   `status` varchar(20) NOT NULL,
   `tanggal_masuk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -226,9 +304,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `username`, `gambar`, `nik`, `password`, `jabatan`, `status`, `tanggal_masuk`) VALUES
-(1, 'rafaek', '123raf', 'default.jpg', '123', '$2y$10$Cikxn9Qb8wXmhbHbtKhZLebLhZv4kTRoTiIvERzNJnNNzlz6eG656', 'Pemilik', '1', 1701267319),
-(2, 'Sendoh', '124sen', 'default.jpg', '123', '$2y$10$Z0VWKZTvQfwc1QLydya49.LjtdmvRQWA7fzl.GGKJau5Q7KzznWma', 'Kasir', '1', 1701274460);
+INSERT INTO `user` (`id`, `nama`, `username`, `gambar`, `nik`, `password`, `jabatan`, `no_hp_user`, `status`, `tanggal_masuk`) VALUES
+(1, 'rafaek', '123raf', 'default.jpg', '123', '$2y$10$Cikxn9Qb8wXmhbHbtKhZLebLhZv4kTRoTiIvERzNJnNNzlz6eG656', 'Pemilik', 0, '1', 1701267319),
+(2, 'Sendoh', '124sen', 'default.jpg', '123', '$2y$10$Z0VWKZTvQfwc1QLydya49.LjtdmvRQWA7fzl.GGKJau5Q7KzznWma', 'Kasir', 0, '1', 1701274460);
 
 -- --------------------------------------------------------
 
@@ -268,6 +346,12 @@ ALTER TABLE `akses_menu_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -301,7 +385,7 @@ ALTER TABLE `penjualan`
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`kd_produk`);
 
 --
 -- Indexes for table `toko`
@@ -332,6 +416,12 @@ ALTER TABLE `akses_menu_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -360,12 +450,6 @@ ALTER TABLE `nota`
 --
 ALTER TABLE `penjualan`
   MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `produk`
---
-ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `toko`
