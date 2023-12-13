@@ -36,9 +36,6 @@
                                         Login
                                     </button>
                                 </form>
-                                <div class="text-center mt-4">
-                                    <a class="small text-white" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
-                                </div>
                             </div>
                         </div>
                     </div>

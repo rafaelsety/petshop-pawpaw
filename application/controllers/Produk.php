@@ -98,7 +98,7 @@ class Produk extends CI_Controller
     {
         $data['title'] = 'Aksesoris';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $this->load->model('Produk_model', 'aksesoris');
+        $this->load->model('Produk_model', 'produk');
         $data['produk'] = $this->produk->getAllProduk();
  
         
