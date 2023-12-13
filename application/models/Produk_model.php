@@ -8,6 +8,21 @@ class Produk_model extends CI_Model
     {
         return $this->db->get('produk')->result_array();
     }
+    public function getAksProduk()
+    {
+        $barang = 'Aksesoris';
+        return $this->db->get_where($this->_table, ['kategori_produk' => $barang])->result_array();
+    }
+    public function getMainProduk()
+    {
+        $barang = 'Mainan';
+        return $this->db->get_where($this->_table, ['kategori_produk' => $barang])->result_array();
+    }
+    public function getMknProduk()
+    {
+        $barang = 'Makanan';
+        return $this->db->get_where($this->_table, ['kategori_produk' => $barang])->result_array();
+    }
 
     public function getproduk($id_produk)
     {
