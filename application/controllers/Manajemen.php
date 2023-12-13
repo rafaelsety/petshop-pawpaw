@@ -12,7 +12,7 @@ class Manajemen extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'manajemen';
+        $data['title'] = 'Manajemen User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
         $data['manajemen']= $this->manajemen->getUser();
@@ -20,7 +20,8 @@ class Manajemen extends CI_Controller
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('nik', 'nik', 'required');
-        $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('password
+        ', 'password', 'required');
         $this->form_validation->set_rules('jabatan', 'jabatan', 'required');
         $this->form_validation->set_rules('status', 'status', 'required');
         $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required');
@@ -73,7 +74,7 @@ class Manajemen extends CI_Controller
 
     public function ubahUser()
     {
-        $data['title'] = 'manajemen';
+        $data['title'] = 'Manajemen';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
         $data['manajemen']= $this->manajemen->userWhere(['id' => $this->uri->segment(3)])->result_array();
