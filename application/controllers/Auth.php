@@ -40,7 +40,8 @@ class Auth extends CI_Controller
                 if ($password == $user['password']) {
                     $data = [
                         'username' => $user['username'],
-                        'jabatan' => $user['jabatan']
+                        'jabatan' => $user['jabatan'],
+                        'nama' => $user['nama']
                     ];
                     $this->session->set_userdata($data);
                     if ($user['jabatan'] == 'Pemilik') {
