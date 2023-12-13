@@ -22,7 +22,7 @@
 
                             <picture>
                                 <source srcset="" type="image/svg+xml">
-                                <img src="<?= base_url('assets/img/profile/') . $m['gambar']; ?>" class="rounded mx-auto mb-3 d-blok" width="500px" alt="...">
+                                <img src="<?= base_url('assets/img/profile/') . $m['gambar']; ?>" class="rounded mx-auto mb-3 d-blok" width="200px" alt="...">
                             </picture>
                         <?php } ?>
                         <input type="file" class="form-control form-control-user" id="gambar" name="gambar">
@@ -38,7 +38,7 @@
                         <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukkan nama NIK" value="<?= $m['nik']; ?>">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password" value="<?= $m['password']; ?>">
+                        <input type="text" readonly  class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password" value="<?= $m['password']; ?>">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="jabatan" name="jabatan" placeholder="Masukkan nominal Jabatan" value="<?= $m['jabatan']; ?>">
@@ -47,7 +47,8 @@
                         <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Masukkan nominal Status" value="<?= $m['status']; ?>">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan nominal Tanggal masuk" value="<?= $m['tanggal_masuk']; ?>">
+                    <select name="tanggal_masuk" readonly class="form-control form-control-user">
+                            <option value="<?= $m['tanggal_masuk']; ?>"><?= $m['tanggal_masuk']; ?></option>
                     </div>
 
                     <div class="form-group">

@@ -27,7 +27,6 @@
                             <th>Nama</th>
                             <th>Username</th>
                             <th>NIK</th>
-                            <th>Password</th>
                             <th>Jabatan</th>
                             <th>Status</th>
                             <th>Tanggal Masuk</th>
@@ -49,7 +48,6 @@
                                 <td><?= $m['nama']; ?></td>
                                 <td><?= $m['username']; ?></td>
                                 <td><?= $m['nik']; ?></td>
-                                <td><?= $m['password']; ?></td>
                                 <td><?= $m['jabatan']; ?></td>
                                 <td><?= $m['status']; ?></td>
                                 <td><?= $m['tanggal_masuk']; ?></td>
@@ -91,7 +89,7 @@
                         <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama">
                         </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan nama username">
+                         <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan nama username">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukkan nama nik">
@@ -106,14 +104,14 @@
                         <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Masukkan  status">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan tanggal_masuk">
+                       <label>Tanggal Masuk</label>
+                       <input type="text" name="tanggal_masuk" value="<?= date('d/m/y') ?>" readonly class="form-control">
                     </div>
                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i> Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i>Tambah</button>
-                            
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i>Tambah</button>     
                 </div>
             </form>
         </div>

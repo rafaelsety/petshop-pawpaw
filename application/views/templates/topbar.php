@@ -5,7 +5,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
+                <nav style="background:#6BA5F2" class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
 
                     <!-- Topbar Navbar -->
                     <h1 class="h3 text-white"><?= $title; ?></h1>
