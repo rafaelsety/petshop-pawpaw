@@ -13,11 +13,11 @@
         </button>
 
         <!-- Topbar Navbar -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center ml-5 mt-5" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
+        <a class="sidebar-large d-flex align-items-center justify-content-center ml-5 mt-5" href="#">
+            <div class="sidebar-large-icon rotate-n-15">
                 <i class="fas fa-paw"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Paw Paw</div>
+            <div class="sidebar-xtra large-text mx-3">Paw Paw</div>
         </a>
 
         <ul class="navbar-nav ml-auto mr-5 mt-5">
@@ -47,28 +47,28 @@
     </nav>
 
 
-    <div class="row align-items-center vh-100">
-        <div class="col-10 mx-auto">
+    <div class="row no-gutter align-items-center vh-100">
+        <div class="col-10 col-md-7 col-lg-7 mx-auto">
             <div class="card-deck">
-                <div class="card bg-primary">
+                <div class="card mr-5"style="background:#6838C8;color:white;">
                     <a href="<?= base_url('produk'); ?>">
                         <div class="card-body">
+                            <h2 class="fas fa-database" style="color: #ffffff;"></h2>
                             <h5 class="card-title text-white">Produk</h5>
-                            <i class="fas fa-database" style="color: #ffffff;"></i>
                         </div>
                 </div>
-                <div class="card bg-primary">
+                <div class="card mr-5"style="background:#6838C8;color:white;">
                     <a href="<?= base_url('transaksi'); ?>">
                         <div class="card-body">
+                            <h2 class="fas fa-table" style="color: #ffffff;"></h2>
                             <h5 class="card-title text-white">Transaksi</h5>
-                            <i class="fas fa-table" style="color: #ffffff;"></i>
                         </div>
                 </div>
-                <div class="card bg-primary">
-                    <a href="<?= base_url('kasir'); ?>">
+                <div class="card mr-5"style="background:#6838C8;color:white;">
+                    <a href="<?= base_url('manajemen'); ?>">
                         <div class="card-body">
-                            <h5 class="card-title text-white">Kasir</h5>
-                            <i class="fas fa-user-cog" style="color: #ffffff;"></i>
+                            <h2 class="fas fa-user-cog" style="color: #ffffff;"></h2>
+                            <h5 class="card-title text-white">kasir</h5>
                         </div>
                 </div>
             </div>
