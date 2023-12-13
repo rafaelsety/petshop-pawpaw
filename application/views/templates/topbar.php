@@ -2,7 +2,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" data-url="<?= base_url('kasir'); ?>">
 
                 <!-- Topbar -->
                 <nav style="background:#6BA5F2" class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">

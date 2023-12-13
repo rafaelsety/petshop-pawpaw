@@ -12,10 +12,11 @@ class Manajemen extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'manajemen';
+        $data['title'] = 'Manajemen User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
         $data['manajemen']= $this->manajemen->getUser();
+
 
         $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]',[
             'required' => 'Nama user harus di isi',
@@ -93,7 +94,7 @@ class Manajemen extends CI_Controller
 
     public function ubahUser()
     {
-        $data['title'] = 'manajemen';
+        $data['title'] = 'Manajemen';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
         $data['manajemen']= $this->manajemen->userWhere(['id' => $this->uri->segment(3)])->result_array();
