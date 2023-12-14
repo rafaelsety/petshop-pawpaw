@@ -92,16 +92,16 @@
                          <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan nama username">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukkan nama nik">
+                        <input type="text" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukkan nik">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan password">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="jabatan" name="jabatan" placeholder="Masukkan  jabatan">
+                        <input type="text" class="form-control form-control-user" id="jabatan" name="jabatan" placeholder="Masukkan jabatan">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Masukkan  status">
+                        <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Masukkan status">
                     </div>
                     <div class="form-group">
                        <label>Tanggal Masuk</label>
