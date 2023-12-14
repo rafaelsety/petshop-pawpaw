@@ -33,20 +33,20 @@
                         <?php endif; ?>
                         <?php $start = 0;
                         foreach ($produk as $p) : ?>
-                            <tr>          
-                                <th><?= ++$start; ?></th>              
+                            <tr>
+                                <th><?= ++$start; ?></th>
                                 <td><?= $p['kd_produk']; ?></td>
-                               	<td><?= $p['nama_produk']; ?></td>
+                                <td><?= $p['nama_produk']; ?></td>
                                 <td><?= $p['jenis_hewan']; ?></td>
                                 <td><?= $p['kategori_produk']; ?></td>
                                 <td><?= $p['stok']; ?></td>
                                 <td><?= $p['berat_bersih']; ?></td>
                                 <td><?= $p['harga']; ?></td>
                                 <td>
-                                <picture>
-                                    <source srcset="" type="image/svg+xml">
-                                    <img src="<?= base_url('assets/img/upload/') . $p['gambar']; ?>" class="img-fluid img-thumbnail" alt="...">
-                                </picture>
+                                    <picture>
+                                        <source srcset="" type="image/svg+xml">
+                                        <img src="<?= base_url('assets/img/upload/') . $p['gambar']; ?>" class="img-fluid img-thumbnail" width="200px" alt="...">
+                                    </picture>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
