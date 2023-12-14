@@ -1,14 +1,5 @@
 				<div class="container-fluid">
-					<div class="clearfix">
-						<div class="float-left">
-							<h1 class="h3 m-0 text-gray-800"><?= $title ?></h1>
-						</div>
-						<div class="float-right">
-							<a href="<?= base_url('penjualan/export_detail/' . $penjualan->no_transaksi) ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
-							<a href="<?= base_url('transaksi') ?>" class="btn btn-secondary btn-sm"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-						</div>
-					</div>
-					<hr>
+
 					<?php if ($this->session->flashdata('success')) : ?>
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							<?= $this->session->flashdata('success') ?>
@@ -25,8 +16,12 @@
 						</div>
 					<?php endif ?>
 					<div class="card shadow">
-						<div class="card-header"><strong>Detail Penjualan - <?= $penjualan->no_transaksi ?></strong></div>
+						<div class="card-header"><strong>Detail Transaksi - <?= $penjualan->no_transaksi ?></strong></div>
 						<div class="card-body">
+							<div class="float-right mb-3">
+								<a href="<?= base_url('transaksi/export_detail/' . $penjualan->no_transaksi) ?>" class="btn btn-danger btn-sm" target="_blank"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
+								<a href="<?= base_url('transaksi') ?>" class="btn btn-secondary btn-sm"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<table class="table table-borderless">

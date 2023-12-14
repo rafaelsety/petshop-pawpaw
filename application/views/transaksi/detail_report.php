@@ -11,17 +11,17 @@
 				<tr>
 					<td><strong>No Penjualan</strong></td>
 					<td>:</td>
-					<td><?= $penjualan->no_penjualan ?></td>
+					<td><?= $penjualan->no_transaksi ?></td>
 				</tr>
 				<tr>
 					<td><strong>Nama Kasir</strong></td>
 					<td>:</td>
-					<td><?= $penjualan->nama_kasir ?></td>
+					<td><?= $penjualan->username ?></td>
 				</tr>
 				<tr>
 					<td><strong>Waktu Penjualan</strong></td>
 					<td>:</td>
-					<td><?= $penjualan->tgl_penjualan ?> - <?= $penjualan->jam_penjualan ?></td>
+					<td><?= $penjualan->tgl_transaksi ?> - <?= $penjualan->jam_transaksi ?></td>
 				</tr>
 			</table>
 		</div>
@@ -34,6 +34,7 @@
 					<tr>
 						<td><strong>No</strong></td>
 						<td><strong>Nama Barang</strong></td>
+						<td><strong>Jenis Hewan</strong></td>
 						<td><strong>Harga Barang</strong></td>
 						<td><strong>Jumlah</strong></td>
 						<td><strong>Sub Total</strong></td>
@@ -43,16 +44,17 @@
 					<?php foreach ($all_detail_penjualan as $detail_penjualan) : ?>
 						<tr>
 							<td><?= $no++ ?></td>
-							<td><?= $detail_penjualan->nama_barang ?></td>
-							<td>Rp <?= number_format($detail_penjualan->harga_barang, 0, ',', '.') ?></td>
-							<td><?= $detail_penjualan->jumlah_barang ?> <?= strtoupper($detail_penjualan->satuan) ?></td>
+							<td><?= $detail_penjualan->nama_produk ?></td>
+							<td><?= $detail_penjualan->jenis_hewan ?></td>
+							<td>Rp <?= number_format($detail_penjualan->harga_produk, 0, ',', '.') ?></td>
+							<td><?= $detail_penjualan->jumlah_produk ?></td>
 							<td>Rp <?= number_format($detail_penjualan->sub_total, 0, ',', '.') ?></td>
 						</tr>
 					<?php endforeach ?>
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="4" align="right"><strong>Total : </strong></td>
+						<td colspan="5" align="right"><strong>Total : </strong></td>
 						<td>Rp <?= number_format($penjualan->total, 0, ',', '.') ?></td>
 					</tr>
 				</tfoot>

@@ -1,18 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
     <!-- DataTables Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-        </div>
         <div class="card-body">
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#produkBaruModal">
+            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahdata">
                 <i class="fa fa-plus"></i> Tambah Produk</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -57,9 +48,9 @@
                                 <td><?= $p['stok']; ?></td>
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="<?= base_url('produk/editproduk/') . $p['kd_produk']; ?>" role="button"><i class="fa fa-edit"></i> Edit</a>
-                                    
+
                                     <a href="<?= base_url('produk/hapusproduk/') . $p['kd_produk'] ?>" onclick="return confirm('Kamu yakin akan menghapus');" role="button">
-                                    <button class="btn btn-danger btn-xs">Hapus</button></a>
+                                        <button class="btn btn-danger btn-xs">Hapus</button></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -85,17 +76,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('aksesoris'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('produk/aksesoris'); ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="file" class="form-control form-control-user" id="gambar" name="gambar">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="nama_produk" name="nama_produk" placeholder="Masukkan Nama Produk">
-                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="kd_produk" name="kd_produk" placeholder="Masukkan Kode Produk">
-                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="jenis_hewan" name="jenis_hewan" placeholder="Masukkan Jenis Hewan">
                     </div>
@@ -111,12 +102,12 @@
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="harga" name="harga" placeholder="Masukkan Harga Produk">
                     </div>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i> Close</button>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i>Tambah</button>
-                            
+
                 </div>
             </form>
         </div>

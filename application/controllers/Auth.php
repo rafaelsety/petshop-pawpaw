@@ -48,8 +48,10 @@ class Auth extends CI_Controller
                         redirect('dashboard/dashpemilik');
                     } else if ($user['jabatan'] == 'Pengelola') {
                         redirect('dashboard/dashpengelola');
-                    } else {
+                    } else if ($user['jabatan'] == 'Kasir') {
                         redirect('dashboard/dashkasir');
+                    } else {
+                        redirect('auth');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password.</div>');

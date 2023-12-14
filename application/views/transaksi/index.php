@@ -1,13 +1,6 @@
 <div id="content-wrapper" class="d-flex flex-column">
 
     <div class="container-fluid">
-        <div class="clearfix">
-            <div class="float-right">
-                <a href="<?= base_url('kasir/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
-                <a href="<?= base_url('kasir') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
-            </div>
-        </div>
-        <hr>
         <?php if ($this->session->flashdata('success')) : ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= $this->session->flashdata('success') ?>
@@ -24,8 +17,9 @@
             </div>
         <?php endif ?>
         <div class="card shadow">
-            <div class="card-header"><strong>Daftar Penjualan</strong></div>
             <div class="card-body">
+                <a href="<?= base_url('transaksi/export') ?>" class="btn btn-danger btn-sm mb-3">
+                    <i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

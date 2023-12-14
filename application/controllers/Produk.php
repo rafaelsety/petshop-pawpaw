@@ -11,7 +11,7 @@ class Produk extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Kategori Produk';
+        $data['title'] = 'Produk';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->load->view('templates/header', $data);
@@ -24,44 +24,53 @@ class Produk extends CI_Controller
     public function hapusproduk()
     {
         $where = ['kd_produk' => $this->uri->segment(3)];
-        $this->Produk_model->hapusproduk($where);
+        $this->load->model('Produk_model', 'produk');
+        $this->produk->hapusproduk($where);
         redirect('produk');
     }
-    
+
     public function editproduk()
     {
-        
-        $data['judul'] = 'Edit Produk';
+
+        $data['title'] = 'Kategori Produk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         //$data['user'] = $this->Produk_model->cekData(['username' => $this->session->userdata('username')])->row_array();
         //$data['user'] = $this->db->get_where('produk', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Produk_model', 'produk');
-        //$data['produk'] = $this->Produk_model->produkWhere(['kd_produk' => $this->uri->segment(3)])->result_array();
-        
-        
+        $data['produk'] = $this->produk->produkWhere(['kd_produk' => $this->uri->segment(3)])->result_array();
+
+
         $this->form_validation->set_rules('kd_produk', 'Kode Produk', 'required', [
-            'required' => 'Kode Produk harus diisi']);
+            'required' => 'Kode Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required', [
-            'required' => 'Kategori harus diisi']);
+            'required' => 'Kategori harus diisi'
+        ]);
         $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required', [
-            'required' => 'Nama Produk harus diisi']);
+            'required' => 'Nama Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('jenis_hewan', 'Jenis hewan', 'required', [
-            'required' => 'Jenis Hewan harus diisi']);
+            'required' => 'Jenis Hewan harus diisi'
+        ]);
         $this->form_validation->set_rules('berat_bersih', ' Berat Bersih', 'required', [
-            'required' => 'Berat Bersih harus diisi']);
+            'required' => 'Berat Bersih harus diisi'
+        ]);
         $this->form_validation->set_rules('stok', 'Stok Barang', 'required|numeric', [
             'required' => 'Stok Barang harus diisi',
-            'numeric' => 'Yang anda masukan bukan angka']);
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
         $this->form_validation->set_rules('harga', 'Harga Jual', 'required|min_length[3]|numeric', [
-            'required' => 'Harga harus diisi', 
-            'min_length' => 'Masukan Harga dengan benar', 
-            'numeric' => 'Yang anda masukan bukan angka']);
-        
+            'required' => 'Harga harus diisi',
+            'min_length' => 'Masukan Harga dengan benar',
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
+
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/upload/';
         $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '3000';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '1000';
+        $config['max_size'] = '30000';
+        $config['max_width'] = '10240';
+        $config['max_height'] = '10000';
         $config['file_name'] = 'img' . time();
         //memuat atau memanggil library upload
         $this->load->library('upload', $config);
@@ -72,12 +81,12 @@ class Produk extends CI_Controller
             $this->load->view('produk/edit_produk', $data);
             $this->load->view('templates/footer');
         } else {
-            if ($this->upload->do_upload('image')) {
-                $image = $this->upload->data();
+            if ($this->upload->do_upload('gambar')) {
+                $gambar = $this->upload->data();
                 unlink('assets/img/upload/' . $this->input->post('old_pict', TRUE));
-                $gambar = $image['file_name'];
+                $image = $gambar['file_name'];
             } else {
-                $gambar = $this->input->post('old_pict', TRUE);
+                $image = $this->input->post('old_pict', TRUE);
             }
             $data = [
                 'nama_produk' => $this->input->post('nama_produk', true),
@@ -87,9 +96,9 @@ class Produk extends CI_Controller
                 'berat_bersih' => $this->input->post('berat_bersih', true),
                 'stok' => $this->input->post('stok', true),
                 'harga' => $this->input->post('harga', true),
-                'gambar' => $gambar
+                'gambar' => $image
             ];
-            $this->Produk_model->updateproduk($data, ['kd_produk' => $this->input->post('kd_produk')]);
+            $this->produk->updateproduk($data, ['kd_produk' => $this->input->post('kd_produk')]);
             redirect('produk');
         }
     }
@@ -100,35 +109,43 @@ class Produk extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Produk_model', 'produk');
         $data['produk'] = $this->produk->getAksProduk();
- 
-        
+
+
         $this->form_validation->set_rules('kd_produk', 'Kode Produk', 'required', [
-            'required' => 'Kode Produk harus diisi']);
+            'required' => 'Kode Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required', [
-            'required' => 'Kategori harus diisi']);
+            'required' => 'Kategori harus diisi'
+        ]);
         $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required', [
-            'required' => 'Nama Produk harus diisi']);
+            'required' => 'Nama Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('jenis_hewan', 'Jenis hewan', 'required', [
-            'required' => 'Jenis Hewan harus diisi']);
+            'required' => 'Jenis Hewan harus diisi'
+        ]);
         $this->form_validation->set_rules('berat_bersih', ' Berat Bersih', 'required', [
-            'required' => 'Berat Bersih harus diisi']);
+            'required' => 'Berat Bersih harus diisi'
+        ]);
         $this->form_validation->set_rules('stok', 'Stok Barang', 'required|numeric', [
             'required' => 'Stok Barang harus diisi',
-            'numeric' => 'Yang anda masukan bukan angka']);
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
         $this->form_validation->set_rules('harga', 'Harga Jual', 'required|min_length[3]|numeric', [
-            'required' => 'Harga harus diisi', 
-            'min_length' => 'Masukan Harga dengan benar', 
-            'numeric' => 'Yang anda masukan bukan angka']);
-        
+            'required' => 'Harga harus diisi',
+            'min_length' => 'Masukan Harga dengan benar',
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
+
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/upload/';
         $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '3000';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '1000';
+        $config['max_size'] = '30000';
+        $config['max_width'] = '10240';
+        $config['max_height'] = '10000';
         $config['file_name'] = 'img' . time();
-        //memuat atau memanggil library upload
+
         $this->load->library('upload', $config);
+
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -136,12 +153,11 @@ class Produk extends CI_Controller
             $this->load->view('produk/aksesoris', $data);
             $this->load->view('templates/footer');
         } else {
-            if ($this->upload->do_upload('image')) {
-                $image = $this->upload->data();
-                unlink('assets/img/upload/' . $this->input->post('old_pict', TRUE));
-                $gambar = $image['file_name'];
+            if ($this->upload->do_upload('gambar')) {
+                $gambar = $this->upload->data();
+                $image = $gambar['file_name'];
             } else {
-                $gambar = $this->input->post('old_pict', TRUE);
+                $image = '';
             }
             $data = [
                 'nama_produk' => $this->input->post('nama_produk', true),
@@ -151,10 +167,10 @@ class Produk extends CI_Controller
                 'berat_bersih' => $this->input->post('berat_bersih', true),
                 'stok' => $this->input->post('stok', true),
                 'harga' => $this->input->post('harga', true),
-                'gambar' => $gambar
+                'gambar' => $image
             ];
-            $this->Produk_model->simpanproduk($data);
-            redirect('aksesoris');
+            $this->produk->simpanproduk($data);
+            redirect('produk/aksesoris');
         }
     }
 
@@ -165,26 +181,33 @@ class Produk extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Produk_model', 'produk');
         $data['produk'] = $this->produk->getMainProduk();
- 
-        
+
+
         $this->form_validation->set_rules('kd_produk', 'Kode Produk', 'required', [
-            'required' => 'Kode Produk harus diisi']);
+            'required' => 'Kode Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required', [
-            'required' => 'Kategori harus diisi']);
+            'required' => 'Kategori harus diisi'
+        ]);
         $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required', [
-            'required' => 'Nama Produk harus diisi']);
+            'required' => 'Nama Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('jenis_hewan', 'Jenis hewan', 'required', [
-            'required' => 'Jenis Hewan harus diisi']);
+            'required' => 'Jenis Hewan harus diisi'
+        ]);
         $this->form_validation->set_rules('berat_bersih', ' Berat Bersih', 'required', [
-            'required' => 'Berat Bersih harus diisi']);
+            'required' => 'Berat Bersih harus diisi'
+        ]);
         $this->form_validation->set_rules('stok', 'Stok Barang', 'required|numeric', [
             'required' => 'Stok Barang harus diisi',
-            'numeric' => 'Yang anda masukan bukan angka']);
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
         $this->form_validation->set_rules('harga', 'Harga Jual', 'required|min_length[3]|numeric', [
-            'required' => 'Harga harus diisi', 
-            'min_length' => 'Masukan Harga dengan benar', 
-            'numeric' => 'Yang anda masukan bukan angka']);
-        
+            'required' => 'Harga harus diisi',
+            'min_length' => 'Masukan Harga dengan benar',
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
+
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/upload/';
         $config['allowed_types'] = 'jpg|png|jpeg';
@@ -230,26 +253,33 @@ class Produk extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Produk_model', 'produk');
         $data['produk'] = $this->produk->getMknProduk();
- 
-        
+
+
         $this->form_validation->set_rules('kd_produk', 'Kode Produk', 'required', [
-            'required' => 'Kode Produk harus diisi']);
+            'required' => 'Kode Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required', [
-            'required' => 'Kategori harus diisi']);
+            'required' => 'Kategori harus diisi'
+        ]);
         $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required', [
-            'required' => 'Nama Produk harus diisi']);
+            'required' => 'Nama Produk harus diisi'
+        ]);
         $this->form_validation->set_rules('jenis_hewan', 'Jenis hewan', 'required', [
-            'required' => 'Jenis Hewan harus diisi']);
+            'required' => 'Jenis Hewan harus diisi'
+        ]);
         $this->form_validation->set_rules('berat_bersih', ' Berat Bersih', 'required', [
-            'required' => 'Berat Bersih harus diisi']);
+            'required' => 'Berat Bersih harus diisi'
+        ]);
         $this->form_validation->set_rules('stok', 'Stok Barang', 'required|numeric', [
             'required' => 'Stok Barang harus diisi',
-            'numeric' => 'Yang anda masukan bukan angka']);
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
         $this->form_validation->set_rules('harga', 'Harga Jual', 'required|min_length[3]|numeric', [
-            'required' => 'Harga harus diisi', 
-            'min_length' => 'Masukan Harga dengan benar', 
-            'numeric' => 'Yang anda masukan bukan angka']);
-        
+            'required' => 'Harga harus diisi',
+            'min_length' => 'Masukan Harga dengan benar',
+            'numeric' => 'Yang anda masukan bukan angka'
+        ]);
+
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/upload/';
         $config['allowed_types'] = 'jpg|png|jpeg';
@@ -303,6 +333,4 @@ class Produk extends CI_Controller
         $this->load->view('produk/produk_kasir', $data);
         $this->load->view('templates/footer');
     }
-
-    
 }

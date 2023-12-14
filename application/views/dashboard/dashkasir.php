@@ -50,22 +50,22 @@
     <div class="row no-gutter align-items-center vh-100">
         <div class="col-10 col-md-7 col-lg-7 mx-auto">
             <div class="card-deck">
-                <div class="card mr-5"style="background:#6838C8;color:white;">
+                <div class="card mr-5" style="background:#6838C8;color:white;">
                     <a href="<?= base_url('produk'); ?>">
                         <div class="card-body">
                             <h2 class="fas fa-database" style="color: #ffffff;"></h2>
                             <h5 class="card-title text-white">Produk</h5>
                         </div>
                 </div>
-                <div class="card mr-5"style="background:#6838C8;color:white;">
+                <div class="card mr-5" style="background:#6838C8;color:white;">
                     <a href="<?= base_url('transaksi'); ?>">
                         <div class="card-body">
                             <h2 class="fas fa-table" style="color: #ffffff;"></h2>
                             <h5 class="card-title text-white">Transaksi</h5>
                         </div>
                 </div>
-                <div class="card mr-5"style="background:#6838C8;color:white;">
-                    <a href="<?= base_url('manajemen'); ?>">
+                <div class="card mr-5" style="background:#6838C8;color:white;">
+                    <a href="<?= base_url('kasir'); ?>">
                         <div class="card-body">
                             <h2 class="fas fa-user-cog" style="color: #ffffff;"></h2>
                             <h5 class="card-title text-white">kasir</h5>
