@@ -22,16 +22,3 @@ function is_logged_in()
         // }
     }
 }
-
-function check_access($jabatan, $menu_id)
-{
-    $ci = get_instance();
-
-    $ci->db->where('jabatan', $jabatan);
-    $ci->db->where('menu_id', $menu_id);
-    $result = $ci->db->get('akses_menu_user');
-
-    if ($result->num_rows() > 0) {
-        return "checked='checked'";
-    }
-}

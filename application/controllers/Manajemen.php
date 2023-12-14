@@ -7,42 +7,41 @@ class Manajemen extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-        
     }
 
     public function index()
     {
-        $data['title'] = 'Manajemen User';
+        $data['title'] = 'Manajemen';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
-        $data['manajemen']= $this->manajemen->getUser();
+        $data['manajemen'] = $this->manajemen->getUser();
 
 
-        $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]',[
+        $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]', [
             'required' => 'Nama user harus di isi',
             'min_length' => 'Nama user terlalu pendek'
         ]);
-        $this->form_validation->set_rules('username', 'username', 'required|min_length[3]',[
+        $this->form_validation->set_rules('username', 'username', 'required|min_length[3]', [
             'required' => 'Username harus di isi',
             'min_length' => 'Username terlalu pendek'
         ]);
-        $this->form_validation->set_rules('nik', 'nik', 'required|min_length[3]|max_length[16]|numeric',[
+        $this->form_validation->set_rules('nik', 'nik', 'required|min_length[3]|max_length[16]|numeric', [
             'required' => 'NIK user harus di isi',
             'min_length' => 'NIK user terlalu pendek',
             'max_length' => 'NIK user terlalu panjang',
             'numeric' => 'NIK yang anda masukan bukan angka'
         ]);
-        $this->form_validation->set_rules('password', 'password', 'required|min_length[3]',[
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[3]', [
             'required' => 'Password harus di isi',
-            'min_length' => 'Password terlalu pendek', 
+            'min_length' => 'Password terlalu pendek',
         ]);
-        $this->form_validation->set_rules('jabatan', 'jabatan', 'required',[
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required', [
             'required' => 'Jabatan harus di isi',
         ]);
-        $this->form_validation->set_rules('status', 'status', 'required',[
+        $this->form_validation->set_rules('status', 'status', 'required', [
             'required' => 'Status harus di isi',
         ]);
-        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required',[
+        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required', [
             'required' => 'Tanggal masuk harus di isi',
         ]);
         //konfigurasi sebelum gambar diupload
@@ -77,13 +76,12 @@ class Manajemen extends CI_Controller
                 'password' => $this->input->post('password', true),
                 'jabatan' => $this->input->post('jabatan', true),
                 'status' => $this->input->post('status', true),
-                'tanggal_masuk' => $this->input->post('tanggal_masuk',true),
+                'tanggal_masuk' => $this->input->post('tanggal_masuk', true),
             ];
 
             $this->manajemen->simpanUser($data);
             redirect('manajemen');
         }
-        
     }
     public function hapusUser()
     {
@@ -97,33 +95,33 @@ class Manajemen extends CI_Controller
         $data['title'] = 'Manajemen';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Manajemen_model', 'manajemen');
-        $data['manajemen']= $this->manajemen->userWhere(['id' => $this->uri->segment(3)])->result_array();
+        $data['manajemen'] = $this->manajemen->userWhere(['id' => $this->uri->segment(3)])->result_array();
 
-        $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]',[
+        $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]', [
             'required' => 'Nama user harus di isi',
             'min_length' => 'Nama user terlalu pendek'
         ]);
-        $this->form_validation->set_rules('username', 'username', 'required|min_length[3]',[
+        $this->form_validation->set_rules('username', 'username', 'required|min_length[3]', [
             'required' => 'Username harus di isi',
             'min_length' => 'Username terlalu pendek'
         ]);
-        $this->form_validation->set_rules('nik', 'nik', 'required|min_length[3]|max_length[16]|numeric',[
+        $this->form_validation->set_rules('nik', 'nik', 'required|min_length[3]|max_length[16]|numeric', [
             'required' => 'NIK user harus di isi',
             'min_length' => 'NIK user terlalu pendek',
             'max_length' => 'NIK user terlalu panjang',
             'numeric' => 'NIK yang anda masukan bukan angka'
         ]);
-        $this->form_validation->set_rules('password', 'password', 'required|min_length[3]',[
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[3]', [
             'required' => 'Password harus di isi',
             'min_length' => 'Password terlalu pendek',
         ]);
-        $this->form_validation->set_rules('jabatan', 'jabatan', 'required',[
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'required', [
             'required' => 'Jabatan harus di isi',
         ]);
-        $this->form_validation->set_rules('status', 'status', 'required',[
+        $this->form_validation->set_rules('status', 'status', 'required', [
             'required' => 'Status harus di isi',
         ]);
-        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required',[
+        $this->form_validation->set_rules('tanggal_masuk', 'tanggal_masuk', 'required', [
             'required' => 'Tanggal masuk harus di isi',
         ]);
         //konfigurasi sebelum gambar diupload

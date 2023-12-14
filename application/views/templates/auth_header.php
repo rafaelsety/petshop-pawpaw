@@ -20,4 +20,4 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-primary" style="background:#6BA5F2">
