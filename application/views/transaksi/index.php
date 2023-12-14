@@ -40,7 +40,6 @@
                                     <td>Rp <?= number_format($penjualan->total, 0, ',', '.') ?></td>
                                     <td>
                                         <a href="<?= base_url('transaksi/detail/' . $penjualan->no_transaksi) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-                                        <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('transaksi/hapus/' . $penjualan->no_transaksi) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
