@@ -127,9 +127,9 @@ class Manajemen extends CI_Controller
         //konfigurasi sebelum gambar diupload
         $config['upload_path'] = './assets/img/profile/';
         $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '3000';
-        $config['max_width'] = '2000';
-        $config['max_heigth'] = '2000';
+        $config['max_size'] = '30000';
+        $config['max_width'] = '20000';
+        $config['max_heigth'] = '20000';
         $config['file_name'] = 'img' . time();
 
         $this->load->library('upload', $config);

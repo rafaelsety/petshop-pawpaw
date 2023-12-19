@@ -64,7 +64,7 @@
                             <h5 class="card-title text-white">Transaksi</h5>
                         </div>
                 </div>
-                <div class="card mr-5" style="background:#6838C8;color:white;">
+                <div class="card mr-5" style="background:green;color:white;">
                     <a href="<?= base_url('kasir'); ?>">
                         <div class="card-body">
                             <h2 class="fas fa-user-cog" style="color: #ffffff;"></h2>

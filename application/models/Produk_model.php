@@ -104,6 +104,7 @@ class Produk_model extends CI_Model
         $query = $this->db->update($this->_table);
         return $query;
     }
+
     public function produkWhere($where)
     {
         return $this->db->get_where('produk', $where);
@@ -119,7 +120,7 @@ class Produk_model extends CI_Model
 
     //public function hapusproduk($kd_produk)
     //{
-      //  return $this->db->delete($this->_table, ['kd_produk' => $kd_produk]);
+    //  return $this->db->delete($this->_table, ['kd_produk' => $kd_produk]);
     //}
 
     public function hapusproduk($where = null)
@@ -129,7 +130,7 @@ class Produk_model extends CI_Model
 
     public function simpanproduk($data = null)
     {
-        $this->db->insert('produk',$data);
+        $this->db->insert('produk', $data);
     }
 
     public function updateproduk($data = null, $where = null)

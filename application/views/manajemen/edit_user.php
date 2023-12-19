@@ -48,8 +48,7 @@
                         <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Masukkan nominal Status" value="<?= $m['status']; ?>">
                     </div>
                     <div class="form-group">
-                        <select name="tanggal_masuk" readonly class="form-control form-control-user">
-                            <option value="<?= $m['tanggal_masuk']; ?>"><?= $m['tanggal_masuk']; ?></option>
+                        <input type="text" class="form-control form-control-user" id="tanggal_masuk" name="tanggal_masuk" placeholder="Masukkan nominal Status" value="<?= date('d/m/y', $m['tanggal_masuk']); ?>">
                     </div>
 
                     <div class="form-group">
