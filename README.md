@@ -8,12 +8,12 @@ Kelompok 3
 
 Anggota:
 
-12220789-Luthfia Khairunnisa Salma
+Luthfia Khairunnisa Salma
 
-12220794-Lina Fitriyanti
+Lina Fitriyanti
 
-12220810-Muhammad Rafael Setyadin
+Muhammad Rafael Setyadin
 
-12220876-Frisca Amalia
+Frisca Amalia
 
-12220806-Bajas Nazarul Amar
+Bajas Nazarul Amar
