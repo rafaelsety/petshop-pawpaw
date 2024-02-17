@@ -1,6 +1,6 @@
 Ujian Akhir Semester Web Programing 2
 
-Membuat Program Manajemen Data dan Transaksi Kasir
+Program Manajemen Data dan Transaksi Kasir
 
 Petshop Paw-Paw
 
